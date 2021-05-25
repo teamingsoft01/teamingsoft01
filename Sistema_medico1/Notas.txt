@@ -39,7 +39,7 @@ COMMIT;
 // insercion de datos 
 abrir nueva terminal 
 python manage.py shell
->>> from Usuario.models import Pacientes ---> siempre siempre importar las librerias
+>>>from Usuario_PostgreSQL.models import Pacientes ---> siempre siempre importar las librerias
 >>> cur1 = Pacientes(nombre = '', apellidos = '', nss = ) --> sentencia insert   
 >>> cur1.save --> guardar 
 >>> cur2 = Pacientes(nombre = 'Tristan', apellidos = 'Orta', nss = 19971102)       
