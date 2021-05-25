@@ -26,7 +26,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-STATICFILES_DIRS = ['C:/Users/MSI/Desktop/cumputacion/ipn/semetres6/INGENIERIA_DE_SOFTWARE/Proyecto_pagina_web'
+STATICFILES_DIRS = ['C:/Users/MSI/Desktop/cumputacion/ipn/semetres6/INGENIERIA_DE_SOFTWARE/teamingsoft01'
                     '/Sistema_medico1/Sistema_medico/Template/assets']
 
 # Application definition
@@ -56,7 +56,7 @@ ROOT_URLCONF = 'Sistema_medico.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['C:/Users/MSI/Desktop/cumputacion/ipn/semetres6/INGENIERIA_DE_SOFTWARE/Proyecto_pagina_web'
+        'DIRS': ['C:/Users/MSI/Desktop/cumputacion/ipn/semetres6/INGENIERIA_DE_SOFTWARE/teamingsoft01'
                  '/Sistema_medico1/Sistema_medico/Template'],  # ruta para extraer las paginas web
         'APP_DIRS': True,
         'OPTIONS': {
