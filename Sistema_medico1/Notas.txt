@@ -1,0 +1,210 @@
+Correr el servidor python manage.py runserver
+
+crear base de datos 
+
+    //creacion de la carpeta con la base de datos
+    se abre una consola 
+    django-admin startapp Usuario
+
+    //se crea primero los datos en el archivo models.py
+    se agrega la ruta en settings 'INSTALLED_APPS'
+    se agrega el nombre de la base de datos 'SistemaMedico.sqlite3'
+
+    
+
+    //se checa que todo este funcionando correctamente en consola
+    python manage.py check Usuario
+
+
+    //se migra la creacion de la base de datos en consola
+    python manage.py migrate 
+
+    
+    // migrar los datos para que aparezca como una base de datos en consola
+    python manage.py makemigrations Usuario
+    se crea un archivo '0001_initial.py'
+
+    //crear codigo sql para la creacion de la tabla
+    python manage.py sqlmigrate Usuario 0001
+
+    CREATE TABLE "Usuario_pacientes" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "nombre" varchar(30) NOT NULL, "apellidos" varchar(50) NOT NULL, "nss" bigint unsigned NOT NULL CHECK ("nss" >= 0));
+COMMIT;
+
+    //realizar el cambio para que lo pueda leer 
+    python manage.py migrate
+
+
+---------------------------------------------------------------------------------------------------
+
+// insercion de datos 
+abrir nueva terminal 
+python manage.py shell
+>>> from Usuario.models import Pacientes ---> siempre siempre importar las librerias
+>>> cur1 = Pacientes(nombre = '', apellidos = '', nss = ) --> sentencia insert   
+>>> cur1.save --> guardar 
+>>> cur2 = Pacientes(nombre = 'Tristan', apellidos = 'Orta', nss = 19971102)       
+>>> cur2.save() 
+>>> cur3 = Pacientes(nombre = 'Miguel', apellidos = 'Andrade', nss = 19971230) 
+>>> cur3.save() 
+>>> cur4 = Pacientes.objects.create(nombre = 'Sebastian', apellidos = 'Garcia', nss = 19991101)  ----> forma mas rapida de insercion
+
+
+
+---------------------------------------------------------------------------------------------------
+
+//Actualizar un registro
+>>> from Usuario.models import Pacientes
+>>> cur5 = Pacientes.objects.create(nombre = 'Benjamin', apellidos = 'Garcia', nss = 19991101)
+cur5.apellidos = 'Lopez'                                                                   
+>>> cur5.save()
+
+en dado caso que no conozcamos las variables
+se puede aplicar filtro de identificador con el metodo get
+>>>cur = Pacientes.objects.get(id=2) 
+>>>print(cur.nombre) 
+>>>Tristan
+>>> cur.nombre = 'Tristan Eduardo'
+>>> cur.save()
+
+
+---------------------------------------------------------------------------------------------------
+//leer todos los datos con ORM
+>>> from Usuario.models import Pacientes
+>>> cur = Pacientes.objects.get(id=1) 
+>>> print(cur.nombre) 
+Cristhian
+
+//impresion de un solo atributo
+>>> pacientes = Pacientes.objects.all() 
+>>> print(pacientes)
+
+<QuerySet [<Pacientes: Pacientes object (1)>, <Pacientes: Pacientes object (2)>, 
+<Pacientes: Pacientes object (3)>, <Pacientes: Pacientes object (4)>, 
+<Pacientes: Pacientes object (5)>]>        ---> consulta de todos los atributos
+
+>>> print(pacientes[2].nombre) 
+Miguel
+
+
+//nos arroja todo el QuerySet de una manera mas visual para ver que atributos se andan consultando 
+>>> pacientes.query.__str__()
+'SELECT "Usuario_pacientes"."id", "Usuario_pacientes"."nombre", "Usuario_pacientes"."apellidos", "Usuario_pacientes"."nss" 
+FROM "Usuario_pacientes"'
+
+//consultar cuantos registros hay en la base de datos
+>>>print(len(pacientes)) 
+5
+
+---------------------------------------------------------------------------------------------------
+
+//eliminar registros de base de datos
+>>>from Usuario.models import Pacientes
+>>>pacienteEliminar = Pacientes.objects.get(id=5)
+>>> print(pacienteEliminar.nombre) 
+Benjamin
+>>> pacienteEliminar.delete()
+(1, {'Usuario.Pacientes': 1}) ---> registro eliminado
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//creacion de la base de datos en PostgreSQL
+ir a la carpeta Usuario_PostgreSQL
+eliminar  la base de datos SistemaMedico.sqlite3
+
+//intarlar psycopg2 para poder conectarse a la base de datos
+pip install psycopg2
+
+
+//ir a settings.py y cambiar la base de datos
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'Usuario_PostgreSQL',
+        'USER': 'postgres',
+        'PASSWORD': 'alumno',
+        'HOST': '127.0.0.1',
+        'DATABASE_PORT': '5432'
+    }
+}
+
+// creacion de la tabla en models.py
+crear la tabla con los objetos 
+
+//abrir uns shell
+comando para crear la tabla en  postgresql
+python manage.py migrate
+python manage.py makemigrations
+python manage.py migrate
+
+---------------------------------------------------------------------------------------------------
+
+// realizar las pruebas de registra, actualizacion, eliminacion y lectura
+// pero primero checar que en settings en el apartado de INSTALLED_APPS 
+ Usuario_PostgreSQL este instalado para que lo pueda leer
+
+
+//una vez comprobado abrir la terminal
+>>>from Usuario_PostgreSQL.models import Pacientes
+>>>paciente = Pacientes.objects.create(nombre = 'alan', apellidos = 'Martinez', curp = '3948792k', nss = 20001221)
+
+//checar la consulta en postgresql 
+ select  * from "Usuario_PostgreSQL_pacientes";
+
+>>> paciente = Pacientes.objects.get(id=1) 
+>>> print(paciente.nombre) 
+Alan
+>>> paciente.nombre = 'Tristan Eduardo'
+>>> paciente.save()
+
+
+
+//realizar consulta
+>>> pacientes = Pacientes.objects.all()
+>>> print(pacientes)
+<QuerySet [<Pacientes: Pacientes object (2)>, <Pacientes: Pacientes object (1)>]>
+
+>>> exec("for p in pacientes: print('{0} - {1} - {2} - {3}'.format(p.id, p.nombre, p.apellidos, p.curp, p.nss))")
+2 - Cristhian - Martinez - hgjgewhg32
+1 - Tristan Eduardo - Martinez - hkjhasdf21
+
+// realizar actualizacion 
+>>> pEditar =  Pacientes.objects.get(id=2)
+>>> pEditar.nombre = 'Alan'               
+>>> pEditar.save() 
+
+// realizar eliminacion 
+>>> pElimina = Pacientes.objects.get(id=1)
+>>> pElimina.delete()
+(1, {'Usuario_PostgreSQL.Pacientes': 1})
+
+
+---------------------------------------------------------------------------------------------------
+
+
+    <table>
+        <thead>
+            <try>
+                <tr>
+                    <th> Pacientes</th>
+                </tr>
+        </thead>
+        <tbody>
+            {% for p in Paciente %} 
+            <tr>
+            <td>{{p.nombre}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+
+
+
+
+python manage.py createsuperuser
+alumno
+cristhianmartinez1902@gmail.com
+    12345678
