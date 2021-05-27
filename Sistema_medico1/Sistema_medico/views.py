@@ -26,7 +26,7 @@ def sesiondoctor(request):
 
 
 def sesionpaciente(request):
-    return render(request, 'sesionpaciente.html')
+    return render(request, 'registration/sesionpaciente.html')
 
 def historiaClinica(request):
     return render(request, 'historiaclinica.html')

@@ -129,3 +129,4 @@ STATIC_URL = '/assets/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = '/historiaclinica.html'
+LOGOUT_REDIRECT_URL = '/iniciosesion.html'

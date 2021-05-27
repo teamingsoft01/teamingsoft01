@@ -24,7 +24,7 @@ urlpatterns = [
     path('iniciosesion.html', iniciodesesion),
     path('innerpage.html',innerpage),
     path('sesiondoctor.html', sesiondoctor),
-    path('sesionpaciente.html',sesionpaciente),
+    path('registration/sesionpaciente.html',sesionpaciente),
     path('getPaciente.html', getPaciente),
     path('historiaclinica.html',historiaClinica),
 

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>MECOSCUAD</title>
+    <title>HOSPITAL VALLADOLID</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -61,14 +61,37 @@
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center">
 
-            <h1 class="logo mr-auto"><a href="index.html">MECOSQUAD</a></h1>
+            <h1 class="logo mr-auto"><a href="index.html">HOSPITAL VALLADOLID</a></h1>
+            {% block content %}
+
+            {% if user.is_authenticated %}
+            <H4>
+                <li class="active">
+                    HOLA {{ user.username }}!
+                </li>
+            </H4>
+            <H4>
+                <li class="active">
+                    <a href="{% url 'logout' %}">Log Out</a>
+                </li>
+            </H4>
+
+            {% else %}
+            <H3>
+                    <p>You are not logged in</p>
+                    <a href="{% url 'login' %}">Log In</a>
+            </H3>
+
+            {% endif %}
+
+            {% endblock %}
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
             <nav class="nav-menu d-none d-lg-block">
                 <ul>
                     <li class="active"><a href="index.html">Inicio</a></li>
-                   
+
 
                 </ul>
             </nav><!-- .nav-menu -->
