@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from Sistema_medico.views import *
-
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,6 +28,5 @@ urlpatterns = [
     path('getPaciente.html', getPaciente),
     path('historiaclinica.html',historiaClinica),
 
-    path('bienvenida', bienvenida),
-    path('bienvenidaRojo/', bienvenidaRojo)
+    path('accounts/', include('django.contrib.auth.urls')), # new
 ]

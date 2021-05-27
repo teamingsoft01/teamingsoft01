@@ -48,10 +48,4 @@ def getPaciente(request):
 
 
 
-def bienvenida(request):  # pasamos un objecto de tipo request como primer argumento
-    return HttpResponse("Bienvenida a este curso")
-
-
-def bienvenidaRojo(request):  # pasamos un objecto de tipo request como primer argumento
-    return HttpResponse("<p style='color: red'>Bienvenida a este curso de Django</p>")
  
