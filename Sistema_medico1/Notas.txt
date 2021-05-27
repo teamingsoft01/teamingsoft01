@@ -203,7 +203,7 @@ Alan
 
 
 
-
+//Creado de login
 python manage.py createsuperuser
 alumno
 cristhianmartinez1902@gmail.com

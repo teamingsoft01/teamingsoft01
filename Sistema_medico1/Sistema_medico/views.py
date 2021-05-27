@@ -28,6 +28,9 @@ def sesiondoctor(request):
 def sesionpaciente(request):
     return render(request, 'sesionpaciente.html')
 
+def historiaClinica(request):
+    return render(request, 'historiaclinica.html')
+
 
 def getPaciente(request):
     pacientesListados=Pacientes.objects.all() # --> listar todos los valores
@@ -41,6 +44,8 @@ def getPaciente(request):
 
 
     return render(request, 'getPaciente.html', {"Paciente": pacientesListados})
+
+
 
 
 def bienvenida(request):  # pasamos un objecto de tipo request como primer argumento
