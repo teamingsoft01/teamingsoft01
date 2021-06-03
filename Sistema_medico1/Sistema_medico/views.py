@@ -60,8 +60,9 @@ def getPaciente(request):
 
 
 def getHitorial(request):
-    historialPacientes = HistorialClinicaPacientes.objects.all()
-    # historialPacientes = HistorialClinicaPacientes.objects.filter(nombre__contains = 'a')
+    # historialPacientes = HistorialClinicaPacientes.objects.all()
+    # historialPacientes = HistorialClinicaPacientes.objects.filter(nombre__contains = 'Tristan')
+    historialPacientes = HistorialClinicaPacientes.objects.filter(nombrePaciente = 'Tristan' )
     return render(request, 'tablahistoriaclinica.html', {"Historial": historialPacientes})
 
 
