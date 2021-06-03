@@ -245,5 +245,5 @@ def inventariomedicamento(request):
 /HOLA
 
 
-
+prueba1
         
