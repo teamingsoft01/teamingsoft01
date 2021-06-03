@@ -246,4 +246,5 @@ def inventariomedicamento(request):
 
 
 prueba1
-        
+
+prueba2
