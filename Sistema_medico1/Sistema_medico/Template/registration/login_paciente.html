@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Hospital Valladolidczxc</title>
+  <title>Hospital Valladolidte</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -32,12 +32,6 @@
   <link href="/assets/css/style.css" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/iniciosesion.css">
 
-  <!-- =======================================================
-  * Template Name: Medilab - v2.1.1
-  * Template URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
@@ -57,62 +51,48 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo mr-auto"><a href="/index.html">HOSPITAL VALLADOLID</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
-
+      <h1 class="logo mr-auto"><a href="/index.html">HOSPITAL Valladolidte</a></h1>
+     
 
     </div>
   </header><!-- End Header -->
 
-  <!-- ======= Hero Section ======= -->
-  <!-- End Hero -->
-
   <main id="main">
     <h2>Inicio de sesion</h2>
-    <form method="post">
+    <form method="post" method="get">
       {% csrf_token %}
       {{ form.as_p }}
-      <button type="submit">Iniciar Sesion</button>
+      <button type="submit" name="ingresar">Iniciar Sesion</button>
     </form>
-    <!-- ======= Why Us Section ======= -->
-    <!-- End Why Us Section -->
 
-    <!-- ======= About Section ======= -->
-    <!-- End About Section -->
-
-    <!-- ======= Counts Section ======= -->
-    <!-- End Counts Section -->
-
-    <!-- ======= Services Section ======= -->
-    <!-- End Services Section -->
-
-    <!-- ======= Appointment Section ======= -->
-    <!-- End Appointment Section -->
-
-    <!-- ======= Departments Section ======= -->
-    <!-- End Departments Section -->
-
-    <!-- ======= Doctors Section ======= -->
     <br>
-    
-    <!-- ======= Frequently Asked Questions Section ======= -->
-    <!-- End Frequently Asked Questions Section -->
-
-    <!-- ======= Testimonials Section ======= -->
-    <!-- End Testimonials Section -->
-
-    <!-- ======= Gallery Section ======= -->
-    <!-- End Gallery Section -->
-
-    <!-- ======= Contact Section ======= -->
-    <!-- End Contact Section -->
-
   </main><!-- End #main -->
 
-  <!-- ======= Footer ======= -->
-  <!-- End Footer -->
+
+  <div class="container-form">
+    <h3 class="txt_gris_medio">Acceder</h3>
+    <hr>
+    <div class="login-container">
+      {% if form.error %}
+        <div class="alert alert-danger"><p>Tu usuario y contraseña no coninciden, intente otra vez</p>
+        </div>
+      {% end if %}
+      <form id="form-login" method="POST" action="">
+        {% csrf_token %}
+        <div class="w450" id="username">
+          {{ form.username }}
+        </div>
+        <div class="w450" id="password">
+          {{ form.password }}
+        </div>
+        <button id="btn-registrar" class="button_large">Entrar</button>
+        <div class="clearfix"></div>
+      </form>
+      <a href="#" class="txt_verde txt_center mt15 mb20" style="display: block;" >Aviso </a>
+    </div>
+  </div>
+
+
 
   <div id="preloader"></div>
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
