@@ -50,10 +50,6 @@
                 <i class="icofont-envelope"></i> <a href="mailto:equipo1ingsoft@gmail.com">equipo1ingsoft@gmail.com</a>
                 <i class="icofont-phone"></i> +52 5512345678
             </div>
-            <div class="social-links">
-                <a href="https://www.twitch.tv/dev0games" class="twitter"><img src="assets/img/twitch.png" alt=""
-                        height="25" width="25"></a>
-            </div>
         </div>
     </div>
 
@@ -67,7 +63,7 @@
             {% if user.is_authenticated %}
             <H4>
                 <li class="active">
-                    HOLA {{ user.username }}!
+                    Hola {{ user.username }}!
                 </li>
             </H4>
             <H4>
@@ -90,9 +86,7 @@
 
             <nav class="nav-menu d-none d-lg-block">
                 <ul>
-                    <li class="active"><a href="index.html">Inicio</a></li>
-
-
+                    <li class="active"><a href="menu_paciente.html">Inicio</a></li>
                 </ul>
             </nav><!-- .nav-menu -->
 
@@ -101,42 +95,11 @@
         </div>
     </header><!-- End Header -->
 
-    <!-- ======= Hero Section ======= -->
-    <!-- End Hero -->
+
 
     <main id="main">
 
-        <!-- ======= Why Us Section ======= -->
-        <!-- End Why Us Section -->
 
-        <!-- ======= About Section ======= -->
-        <!-- End About Section -->
-
-        <!-- ======= Counts Section ======= -->
-        <!-- End Counts Section -->
-
-        <!-- ======= Services Section ======= -->
-        <!-- End Services Section -->
-
-        <!-- ======= Appointment Section ======= -->
-        <!-- End Appointment Section -->
-
-        <!-- ======= Departments Section ======= -->
-        <!-- End Departments Section -->
-
-        <!-- ======= Doctors Section ======= -->
-        <!-- End Doctors Section -->
-
-        <!-- ======= Frequently Asked Questions Section ======= -->
-        <!-- End Frequently Asked Questions Section -->
-
-        <!-- ======= Testimonials Section ======= -->
-        <!-- End Testimonials Section -->
-
-        <!-- ======= Gallery Section ======= -->
-        <!-- End Gallery Section -->
-
-        <!-- ======= Contact Section ======= -->
         <br>
         <br>
         <br>
@@ -146,13 +109,13 @@
 
             </div>
 
-            <section class="form-register">
-                <form action="">
+            <section class="form-register" method="POST">
+                <form action="/historiaclinica.html" method="POST"> {% csrf_token %}
                     <h4>Historia Clinica del Paciente</h4>
                     <p>Nombre del Paciente</p>
-                    <input class="controls" type="text" name="nombre" id="nombre" placeholder="Empezando por Apellidos">
+                    <input class="controls" type="text" name="txtnombre" placeholder="Empezando por Apellidos">
                     <p>Tipo de Sangre</p>
-                    <select name="tipodesangre" id="tipodesangre" class="controls">
+                    <select name="txttipodesangre" id="tipodesangre" class="controls">
                         <option value="A positivo">A+</option>
                         <option value="A negativo">A-</option>
                         <option value="B positivo">B+</option>
@@ -163,29 +126,28 @@
                         <option value="O negativo">O-</option>
                     </select>
                     <p>Fecha del Ultimo Examen Medico</p>
-                    <input class="controls" type="date" name="fechauem" id="fechauem">
+                    <input class="controls" type="date" name="txtfechauem" id="fechauem">
                     <p>Resultados de la Prueba Anterior</p>
-                    <input class="controls" type="text" name="resultadospa" id="emailpaciente"
+                    <input class="controls" type="text" name="txtresultadospa" id="emailpaciente"
                         placeholder="Resultados de las pruebas y estudios anteriores">
                     <p>Enfermedades mas Importantes</p>
-                    <input class="controls" type="text" name="enfermedadesmi" id="enfermedadesmi"
+                    <input class="controls" type="text" name="txtenfermedadesmi" id="enfermedadesmi"
                         placeholder="Enfermedades mas Importantes">
                     <p>Medicamento Actual</p>
-                    <input class="controls" type="text" name="Medicamentoa" id="Medicamentoa"
+                    <input class="controls" type="text" name="txtmedicamentoa" id="Medicamentoa"
                         placeholder="Medicinas que toma, sus dosis y durante cuánto tiempo las ha tomado">
                     <p>Alergias</p>
-                    <input class="controls" type="text" name="alergias" id="alergias"
+                    <input class="controls" type="text" name="txtalergias" id="alergias"
                         placeholder="Cualquier tipo de alergia">
                     <p>Enfermedades Cronicas</p>
-                    <input class="controls" type="text" name="enfermedadc" id="enfermedadc"
+                    <input class="controls" type="text" name="txtenfermedadc" id="enfermedadc"
                         placeholder="Cualquier enfermedad crónica">
                     <p>Enfermedades Cronicas Familiares</p>
-                    <input class="controls" type="text" name="enfermedadcf" id="enfermedadcf"
+                    <input class="controls" type="text" name="txtenfermedadcf" id="enfermedadcf"
                         placeholder="Cualquier enfermedad crónica familiar">
-                    <input class="botons" type="submit" value="Enviar">
+                    <input class="env" type="submit" value="Enviar">
                 </form>
             </section>
-
 
         </section><!-- End Contact Section -->
 

@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.base import Model
 
 # Create your models here.
 
@@ -8,7 +9,6 @@ class Pacientes(models.Model):
     apellidos = models.CharField(max_length=50)
     curp = models.CharField(max_length=18)
     nss = models.PositiveBigIntegerField()
-
     def __str__(self):
         texto = "{0} {1} {2} {3}"
         return texto.format(self.nombre, self.apellidos, self.curp, self.nss)
@@ -24,7 +24,6 @@ class HistorialClinicaPacientes(models.Model):
     enfermedadesCronicas = models.CharField(max_length=150)
     alergias = models.CharField(max_length=100)
     enfermedadesCronicasFamiliares = models.CharField(max_length=100)
-
     def __str__(self):
         texto = "{0} {1} {2} {3} {4} {5} {6} {7} {8}"
         return texto.format(
@@ -41,3 +40,34 @@ class Medicamentos(models.Model):
     def __str__(self):
         texto = "{0} {1} {2}"
         return texto.format(self.nombreMedicamento, self.costo, self.piezas)
+
+class Agenda(models.Model):
+    nombre = models.CharField(max_length=120)
+    curp = models.CharField(max_length=18)
+    correo = models.CharField(max_length=50)
+    fechaAtencion = models.CharField(max_length=10)
+    horaAtencion= models.CharField(max_length=10)
+    def __str__(self):
+        texto = "{0} {1} {2} {3} {4}"
+        return texto.format(self.nombre, self.curp, self.correo, self.fechaAtencion, self.horaAtencion)
+
+
+class Notamedica(models.Model):
+    fechadeatencion = models.CharField(max_length=18)
+    nombre = models.CharField(max_length=120)
+    emailpaciente= models.CharField(max_length=120)
+    subjetivo= models.CharField(max_length=1000)
+    objetivo= models.CharField(max_length=1000)
+    analisis= models.CharField(max_length=1000)
+    plan= models.CharField(max_length=1000)
+    def __str__(self):
+        texto = "{0} {1} {2} {3} {4} {5} {6}"
+        return texto.format(
+            self.fechadeatencion,
+            self.nombre,
+            self.emailpaciente, 
+            self.subjetivo, 
+            self.objetivo, 
+            self.analisis, 
+            self.plan
+        )

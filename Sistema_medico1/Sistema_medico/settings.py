@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 
+from django.db.models.fields import EmailField
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -128,5 +130,13 @@ STATIC_URL = '/assets/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000/admin/auth/user/'
+# LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000/admin/auth/user/'
+LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000/menu_principal.html'
 LOGOUT_REDIRECT_URL = '/iniciosesion.html'
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_POST = 587
+EMAIL_HOST_USER = "teamingsoft01@gmail.com"
+EMAIL_HOST_PASSWORD = 'Medico01'

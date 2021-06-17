@@ -65,9 +65,33 @@
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
+            {% block content %}
+
+            {% if user.is_authenticated %}
+            <H3>
+                    <class="active">
+                    Hola {{ user.username }}!
+                
+            </H3>
+            <H4>
+                    <class="active">
+                    <a href="{% url 'logout' %}">Log Out</a>
+                
+            </H4>
+
+            {% else %}
+            <H3>
+                    <p>You are not logged in</p>
+                    <a href="{% url 'login' %}">Log In</a>
+            </H3>
+
+            {% endif %}
+
+            {% endblock %}
+
             <nav class="nav-menu d-none d-lg-block">
                 <ul>
-                    <li class="active"><a href="index.html">Inicio</a></li>
+                    <li class="active"><a href="menu_paciente.html">Inicio</a></li>
                    
 
                 </ul>
@@ -83,37 +107,8 @@
 
     <main id="main">
 
-        <!-- ======= Why Us Section ======= -->
-        <!-- End Why Us Section -->
+ 
 
-        <!-- ======= About Section ======= -->
-        <!-- End About Section -->
-
-        <!-- ======= Counts Section ======= -->
-        <!-- End Counts Section -->
-
-        <!-- ======= Services Section ======= -->
-        <!-- End Services Section -->
-
-        <!-- ======= Appointment Section ======= -->
-        <!-- End Appointment Section -->
-
-        <!-- ======= Departments Section ======= -->
-        <!-- End Departments Section -->
-
-        <!-- ======= Doctors Section ======= -->
-        <!-- End Doctors Section -->
-
-        <!-- ======= Frequently Asked Questions Section ======= -->
-        <!-- End Frequently Asked Questions Section -->
-
-        <!-- ======= Testimonials Section ======= -->
-        <!-- End Testimonials Section -->
-
-        <!-- ======= Gallery Section ======= -->
-        <!-- End Gallery Section -->
-
-        <!-- ======= Contact Section ======= -->
         <br>
         <br>
         <br>
@@ -124,12 +119,12 @@
             </div>
 
             <section class="form-register">
-                <form action="">
+                <form action="/programarcitas.html" method="POST">{% csrf_token %}
                     <h4>Agendar Cita Primer Nivel</h4>
                     <p>Nombre del Paciente</p>
                     <input class="controls" type="text" name="nombre" id="nombre" placeholder="Empezando por Apellidos">
                     <p>CURP</p>
-                    <input class="controls" type="text" name="nombre" id="nombre" placeholder="Introduce tu CURP">
+                    <input class="controls" type="text" name="curp" id="nombre" placeholder="Introduce tu CURP">
                     <p>Correo del Paciente</p>
                     <input class="controls" type="email" name="emailpaciente" id="emailpaciente"
                         placeholder="Correo Electronico del Paciente">
@@ -152,6 +147,7 @@
                         <option value="una1">1:00 p.m. - 1:30 p.m.</option>
                         <option value="una2">1:30 p.m. - 2:00 p.m.</option>
                     </select>
+                    <input class="env" type="submit" value="Enviar"> 
                 </form>
             </section>
 

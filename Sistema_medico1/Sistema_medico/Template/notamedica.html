@@ -83,37 +83,6 @@
 
     <main id="main">
 
-        <!-- ======= Why Us Section ======= -->
-        <!-- End Why Us Section -->
-
-        <!-- ======= About Section ======= -->
-        <!-- End About Section -->
-
-        <!-- ======= Counts Section ======= -->
-        <!-- End Counts Section -->
-
-        <!-- ======= Services Section ======= -->
-        <!-- End Services Section -->
-
-        <!-- ======= Appointment Section ======= -->
-        <!-- End Appointment Section -->
-
-        <!-- ======= Departments Section ======= -->
-        <!-- End Departments Section -->
-
-        <!-- ======= Doctors Section ======= -->
-        <!-- End Doctors Section -->
-
-        <!-- ======= Frequently Asked Questions Section ======= -->
-        <!-- End Frequently Asked Questions Section -->
-
-        <!-- ======= Testimonials Section ======= -->
-        <!-- End Testimonials Section -->
-
-        <!-- ======= Gallery Section ======= -->
-        <!-- End Gallery Section -->
-
-        <!-- ======= Contact Section ======= -->
         <br>
         <br>
         <br>
@@ -124,7 +93,7 @@
             </div>
 
             <section class="form-register">
-                <form action="">
+                <form action="/notamedica.html" method="POST">{% csrf_token %}
                     <h4>Nota Medica</h4>
                     <p>Fecha de Atencion</p>
                     <input class="controls" type="date" name="fechadeatencion" id="fechadeatencion">
@@ -140,7 +109,7 @@
                     <input class="controls" type="text" name="objetivo" id="objetivo"
                         placeholder="Hallazgos del examen  fisico, pruebas diagnosticas">
                     <p>Analisis</p>
-                    <input class="controls" type="text" name="canalisisorreo" id="analisis"
+                    <input class="controls" type="text" name="analisis" id="analisis"
                         placeholder="Resumen del paciente, problemas, posibles diferenciales razonamiento clínico">
                     <p>Plan</p>
                     <input class="controls" type="text" name="plan" id="plan"

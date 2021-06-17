@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Pacientes, HistorialClinicaPacientes, Medicamentos
+from .models import Agenda, Notamedica, Pacientes, HistorialClinicaPacientes, Medicamentos
 # Register your models here.
 
 
@@ -21,3 +21,5 @@ admin.site.register(Pacientes, PacienteAdmin)
 admin.site.register(HistorialClinicaPacientes)
 
 admin.site.register(Medicamentos)
+admin.site.register(Agenda)
+admin.site.register(Notamedica)
